@@ -17,40 +17,55 @@ header {
     width: 100%;
     background: rgba(0, 0, 0, 0.7);
     padding: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     z-index: 10; 
 }
 
 nav {
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
     padding: 0 20px;
+    position: relative;
 }
 
 .logo {
     font-size: 24px;
     font-weight: bold;
     color: white;
+    flex: 1;
+    text-align: left;
 }
 
-nav ul {
+.center-text {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    flex: 1;
+    color: white;
+}
+
+.nav-links {
     list-style: none;
     display: flex;
+    justify-content: flex-end;
+    flex: 1;
 }
 
-nav ul li {
+.nav-links li {
     margin-left: 20px;
 }
 
-nav ul li a {
+.nav-links li a {
     color: white;
     text-decoration: none;
     font-size: 18px;
 }
 
-nav ul li a:hover {
+.nav-links li a:hover {
     color: #ccc;
 }
 
@@ -83,11 +98,6 @@ nav ul li a:hover {
 }
 
 h1 {
-    font-size: 24px;
-    color: white;
-}
-
-
-h1 {
     font-size: 24px; 
+    color: white;
 }
