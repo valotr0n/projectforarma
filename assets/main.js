@@ -1,18 +1,16 @@
-function handleNavigation(event) {
-    event.preventDefault(); 
+document.addEventListener('DOMContentLoaded', function() {
+    const links = document.querySelectorAll('a');
 
-    const targetId = event.target.id;
+    for (let i = 0; i < links.length; i++) {
+        links[i].addEventListener('click', function(event) {
+            event.preventDefault();
+            const targetUrl = this.getAttribute('href');
 
-    if (targetId === "home-link") {
-        console.log("Нажата кнопка: Главная");
-    } else if (targetId === "table-link") {
-        console.log("Нажата кнопка: Таблица");
-    } else if (targetId === "about-link") {
-        console.log("Нажата кнопка: О нас");
+            document.body.classList.add('fade-out');
+
+            setTimeout(function() {
+                window.location.href = targetUrl;
+            }, 500); // Тайм-аут для завершения анимации перед переходом
+        });
     }
-}
-
-// Назначаем обработчики кликов на ссылки
-document.getElementById('home-link').addEventListener('click', handleNavigation);
-document.getElementById('table-link').addEventListener('click', handleNavigation);
-document.getElementById('about-link').addEventListener('click', handleNavigation);
+});

@@ -290,3 +290,49 @@ table {
     }
 }
 
+/* Оставляем все существующие стили */
+
+.aboutus-section {
+    padding: 100px 20px;
+    text-align: center;
+}
+
+.aboutus-section h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.aboutus-section .info-block {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 600px;
+    border-radius: 10px;
+    color: #f0f0f0;
+}
+
+.aboutus-section h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+/* Плавные переходы между страницами */
+body {
+    transition: opacity 0.5s ease-in-out;
+}
+
+body.fade-out {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Добавляем анимацию для плавной подгрузки секций */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.hero-section, .news-section, .aboutus-section {
+    animation: fadeIn 1s ease-in-out;
+}
+
