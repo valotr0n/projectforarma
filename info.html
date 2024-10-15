@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Информация о пользователях</title>
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="/assets/css/main.css">
 </head>
 <body>
     <header>
@@ -14,7 +14,7 @@
             <ul class="nav-links">
                 <li><a href="main.html">Главная</a></li>
                 <li><a href="info.html">Таблица</a></li>
-                <li><a href="#">О нас</a></li>
+                <li><a href="aboutus.html">О нас</a></li>
             </ul>
         </nav>
     </header>
@@ -22,7 +22,8 @@
     <main>
         <section class="info-section">
             <h2>Информация о пользователях</h2>
-            <table>
+            <p>Эта таблица отображает статистику текущих пользователей. В будущем данные будут интегрированы через Google Sheets API.</p>
+            <table class="styled-table">
                 <thead>
                     <tr>
                         <th>Имя пользователя</th>
@@ -50,7 +51,6 @@
                         <td>Серебряный</td>
                         <td>50</td>
                     </tr>
-
                 </tbody>
             </table>
         </section>

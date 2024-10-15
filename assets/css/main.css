@@ -8,7 +8,7 @@ body {
     font-family: 'Kanit', sans-serif;
     background-color: #000;
     color: white;
-    height: 100vh;
+    overflow-x: hidden;
 }
 
 header {
@@ -20,7 +20,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    z-index: 10; 
+    z-index: 10;
 }
 
 nav {
@@ -63,6 +63,7 @@ nav {
     color: white;
     text-decoration: none;
     font-size: 18px;
+    transition: color 0.3s ease-in-out;
 }
 
 .nav-links li a:hover {
@@ -70,12 +71,12 @@ nav {
 }
 
 .hero-section {
-    background-image: url('/assets/img/forarma.jpg'); 
+    background-image: url('/assets/img/forarma.jpg');
     background-size: cover;
     background-position: center;
     height: 100vh;
     position: relative;
-    z-index: 1; 
+    z-index: 1;
 }
 
 .overlay {
@@ -84,8 +85,8 @@ nav {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5); 
-    z-index: 2; 
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 2;
 }
 
 .content {
@@ -94,11 +95,198 @@ nav {
     left: 10%;
     text-align: left;
     color: white;
-    z-index: 3; 
+    z-index: 3;
 }
 
 h1 {
-    font-size: 24px; 
+    font-size: 36px;
     color: white;
+}
+
+h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.news-section {
+    background-image: url('/assets/img/fon.jpg');
+    background-size: cover;
+    background-position: center;
+    padding: 50px 0;
+    text-align: center;
+}
+
+.news-content {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.news-content p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #f0f0f0;
+}
+
+/* Плавные переходы между страницами */
+body {
+    transition: opacity 0.5s ease-in-out;
+}
+
+body.fade-out {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Анимация для фона */
+.hero-section, .news-section {
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    background-image: url('/assets/img/fon.jpg');
+    font-family: 'Kanit', sans-serif;
+    background-color: #000;
+    color: white;
+    min-height: 100vh;
+}
+
+header {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 10;
+}
+
+nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    flex: 1;
+    text-align: left;
+}
+
+.center-text {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    flex: 1;
+    color: white;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+    flex: 1;
+}
+
+.nav-links li {
+    margin-left: 20px;
+}
+
+.nav-links li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s ease-in-out;
+}
+
+.nav-links li a:hover {
+    color: #ccc;
+}
+
+/* Стили для секции с таблицей */
+.info-section {
+    padding: 100px 20px;
+    text-align: center;
+}
+
+.info-section h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.info-section p {
+    font-size: 18px;
+    color: #ccc;
+    margin-bottom: 30px;
+}
+
+table {
+    width: 80%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    overflow: hidden;
+}
+
+.styled-table {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.styled-table th, .styled-table td {
+    padding: 12px 15px;
+    text-align: left;
+    color: #f0f0f0;
+}
+
+.styled-table th {
+    background-color: #4CAF50;
+    font-weight: bold;
+}
+
+.styled-table tr {
+    border-bottom: 1px solid #ddd;
+}
+
+.styled-table tr:nth-of-type(even) {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.styled-table tr:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+    table {
+        width: 100%;
+    }
+
+    .styled-table th, .styled-table td {
+        font-size: 14px;
+        padding: 10px 8px;
+    }
 }
 
