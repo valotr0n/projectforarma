@@ -5,7 +5,7 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Kanit', sans-serif;
     background-color: #000;
     color: white;
     height: 100vh;
@@ -70,7 +70,7 @@ nav {
 }
 
 .hero-section {
-    background-image: url('photo_2024-10-14_19dfdfd-57-02.jpg'); 
+    background-image: url('/assets/img/forarma.jpg'); 
     background-size: cover;
     background-position: center;
     height: 100vh;
@@ -101,3 +101,4 @@ h1 {
     font-size: 24px; 
     color: white;
 }
+
