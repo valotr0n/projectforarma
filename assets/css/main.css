@@ -288,8 +288,6 @@ table {
     }
 }
 
-/* Оставляем все существующие стили */
-
 .aboutus-section {
     padding: 100px 20px;
     text-align: center;
@@ -352,7 +350,7 @@ body.fade-out {
 }
 
 
-/* Анимация появления */
+
 .fade-in {
     opacity: 0;
     transform: translateY(20px);
@@ -363,6 +361,18 @@ body.fade-out {
     opacity: 1;
     transform: translateY(0);
 }
+
+.division-header {
+    background-color: #493f3f; 
+    color: white; 
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+    padding: 15px 0;
+    border-top: 1px solid #f0f0f0; 
+    border-bottom: 1px solid #f0f0f0;
+}
+
 
 
 

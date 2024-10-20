@@ -30,3 +30,4 @@ document.addEventListener('DOMContentLoaded', function () {
         observer.observe(element);
     });
 });
+
