@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>О нас</title>
-    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/global.css">
+    <link rel="stylesheet" href="/assets/css/about.css">
 </head>
 <body>
     <header>
@@ -39,6 +40,20 @@
                 <p>
                     <a href="https://75thcompany.ru/index.php" target="_blank">Перейти на форум</a>
                 </p>
+            </div>
+    
+            <!-- Форма для отправки сообщения администратору -->
+            <div class="info-block">
+                <h3>Связаться с администрацией</h3>
+                <form id="contact-form" action="/send-email" method="POST">
+                    <label for="email">Ваша почта:</label>
+                    <input type="email" id="email" name="email" required placeholder="Введите вашу почту">
+                    
+                    <label for="message">Сообщение:</label>
+                    <textarea id="message" name="message" required placeholder="Введите ваше сообщение"></textarea>
+                    
+                    <button type="submit">Отправить</button>
+                </form>
             </div>
         </section>
     </main>

@@ -1,0 +1,63 @@
+/* Стили для секции "О нас" */
+.aboutus-section {
+    padding: 100px 20px;
+    text-align: center;
+}
+
+.aboutus-section h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.aboutus-section .info-block {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 600px;
+    border-radius: 10px;
+    color: #f0f0f0;
+}
+
+.aboutus-section h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+/* Стили для отправки сообщений пользователем */
+#contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    color: #f0f0f0;
+}
+
+#contact-form label {
+    font-size: 18px;
+}
+
+#contact-form input,
+#contact-form textarea {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    font-size: 16px;
+}
+
+#contact-form button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #bd241f;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+#contact-form button:hover {
+    background-color: #bd241f;
+}

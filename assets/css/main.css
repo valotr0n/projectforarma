@@ -1,74 +1,4 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Kanit', sans-serif;
-    background-color: #000;
-    color: white;
-    overflow-x: hidden;
-}
-
-header {
-    position: absolute;
-    top: 0;
-    width: 100%;
-    background: rgba(0, 0, 0, 0.7);
-    padding: 10px 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    z-index: 10;
-}
-
-nav {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 20px;
-    position: relative;
-}
-
-.logo {
-    font-size: 24px;
-    font-weight: bold;
-    color: white;
-    flex: 1;
-    text-align: left;
-}
-
-.center-text {
-    font-size: 24px;
-    font-weight: bold;
-    text-align: center;
-    flex: 1;
-    color: white;
-}
-
-.nav-links {
-    list-style: none;
-    display: flex;
-    justify-content: flex-end;
-    flex: 1;
-}
-
-.nav-links li {
-    margin-left: 20px;
-}
-
-.nav-links li a {
-    color: white;
-    text-decoration: none;
-    font-size: 18px;
-    transition: color 0.3s ease-in-out;
-}
-
-.nav-links li a:hover {
-    color: #ccc;
-}
+/* Стили для главной страницы */
 
 .hero-section {
     background-image: url('/assets/img/I_need_to_make_a_picture_for_the_main_page_of_the_\ \(2\).jpg');
@@ -98,21 +28,16 @@ nav {
     z-index: 3;
 }
 
-h1 {
-    font-size: 36px;
-    color: white;
-}
-
-h2 {
-    font-size: 28px;
-    margin-bottom: 20px;
-    text-align: center;
+.section-divider {
+    height: 50px;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.7));
+    margin-top: 50px;
+    margin-bottom: 50px;
+    z-index: 3;
 }
 
 .news-section {
-    background-size: cover;
-    background-position: center;
-    padding: 50px 0;
+    padding: 100px 0;
     text-align: center;
 }
 
@@ -130,226 +55,14 @@ h2 {
     color: #f0f0f0;
 }
 
-/* Плавные переходы между страницами */
-body {
-    transition: opacity 0.5s ease-in-out;
-}
-
-body.fade-out {
-    opacity: 0;
-    pointer-events: none;
-}
-
-/* Анимация для фона */
-.hero-section, .news-section {
-    animation: fadeIn 1s ease-in-out;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-
-body {
-    font-family: 'Kanit', sans-serif;
-    background-color: #000;
-    color: white;
-    min-height: 100vh;
-}
-
-header {
-    position: absolute;
-    top: 0;
-    width: 100%;
-    background: rgba(0, 0, 0, 0.7);
-    padding: 10px 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    z-index: 10;
-}
-
-nav {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 20px;
-}
-
-.logo {
-    font-size: 24px;
-    font-weight: bold;
-    color: white;
-    flex: 1;
-    text-align: left;
-}
-
-.center-text {
-    font-size: 24px;
-    font-weight: bold;
-    text-align: center;
-    flex: 1;
-    color: white;
-}
-
-.nav-links {
-    list-style: none;
-    display: flex;
-    justify-content: flex-end;
-    flex: 1;
-}
-
-.nav-links li {
-    margin-left: 20px;
-}
-
-.nav-links li a {
-    color: white;
-    text-decoration: none;
-    font-size: 18px;
-    transition: color 0.3s ease-in-out;
-}
-
-.nav-links li a:hover {
-    color: #ccc;
-}
-
-/* Стили для секции с таблицей */
-.info-section {
-    padding: 100px 20px;
-    text-align: center;
-}
-
-.info-section h2 {
-    font-size: 28px;
-    margin-bottom: 20px;
-}
-
-.info-section p {
-    font-size: 18px;
-    color: #ccc;
-    margin-bottom: 30px;
-}
-
-table {
-    width: 80%;
-    margin: 0 auto;
-    border-collapse: collapse;
-    overflow: hidden;
-}
-
-.styled-table {
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-}
-
-.styled-table th, .styled-table td {
-    padding: 12px 15px;
-    text-align: left;
-    color: #f0f0f0;
-}
-
-.styled-table th {
-    background-color: #af0c0c;
-    font-weight: bold;
-}
-
-.styled-table tr {
-    border-bottom: 1px solid #ddd;
-}
-
-.styled-table tr:nth-of-type(even) {
-    background-color: rgba(255, 255, 255, 0.05);
-}
-
-.styled-table tr:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-}
-
-/* Адаптивность для мобильных устройств */
-@media (max-width: 768px) {
-    table {
-        width: 100%;
-    }
-
-    .styled-table th, .styled-table td {
-        font-size: 14px;
-        padding: 10px 8px;
-    }
-}
-
-.aboutus-section {
-    padding: 100px 20px;
-    text-align: center;
-}
-
-.aboutus-section h2 {
-    font-size: 28px;
-    margin-bottom: 20px;
-}
-
-.aboutus-section .info-block {
-    background-color: rgba(255, 255, 255, 0.1);
-    padding: 20px;
-    margin: 20px auto;
-    max-width: 600px;
-    border-radius: 10px;
-    color: #f0f0f0;
-}
-
-.aboutus-section h3 {
-    font-size: 24px;
-    margin-bottom: 10px;
-}
-
-/* Плавные переходы между страницами */
-body {
-    transition: opacity 0.5s ease-in-out;
-}
-
-body.fade-out {
-    opacity: 0;
-    pointer-events: none;
-}
-
-/* Добавляем анимацию для плавной подгрузки секций */
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
 .hero-section, .news-section, .aboutus-section {
     animation: fadeIn 1s ease-in-out;
 }
 
-/* Переход между секциями на главной странице + анимация появления страницы */
-.section-divider {
-    height: 50px;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.7));
-    margin-top: 50px;
-    margin-bottom: 50px;
-    z-index: 3;
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
-
-.news-section {
-    padding: 100px 0;
-}
-
-.hero-section {
-    filter: brightness(0.8);
-}
-
-
 
 .fade-in {
     opacity: 0;
@@ -361,18 +74,4 @@ body.fade-out {
     opacity: 1;
     transform: translateY(0);
 }
-
-.division-header {
-    background-color: #493f3f; 
-    color: white; 
-    font-weight: bold;
-    font-size: 20px;
-    text-align: center;
-    padding: 15px 0;
-    border-top: 1px solid #f0f0f0; 
-    border-bottom: 1px solid #f0f0f0;
-}
-
-
-
 

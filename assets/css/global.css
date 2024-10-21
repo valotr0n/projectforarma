@@ -1,0 +1,112 @@
+/* Сброс стилей и общие правила */
+.hero-section, .news-section, .aboutus-section {
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Переход между секциями на главной странице + анимация появления страницы */
+.section-divider {
+    height: 50px;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.7));
+    margin-top: 50px;
+    margin-bottom: 50px;
+    z-index: 3;
+}
+
+.news-section {
+    padding: 100px 0;
+}
+
+.hero-section {
+    filter: brightness(0.8);
+}
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.division-header {
+    background-color: #000000; 
+    color: white; 
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+    padding: 15px 0;
+    border-top: 1px solid #f0f0f0; 
+    border-bottom: 1px solid #f0f0f0;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Kanit', sans-serif;
+    background-color: #000;
+    color: white;
+    overflow-x: hidden;
+    min-height: 100vh;
+    transition: opacity 0.5s ease-in-out;
+}
+
+body.fade-out {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Стили для шапки и навигации */
+header {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    padding: px 10;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 10;
+}
+
+nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.logo {
+    font-size: 30px;
+    font-weight: bold;
+    color: white;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.nav-links li {
+    margin-left: 20px;
+}
+
+.nav-links li a {
+    color: white;
+    text-decoration: none;
+    font-size: 25px;
+    transition: color 0.3s ease-in-out;
+}
+
+.nav-links li a:hover {
+    color: #ccc;
+}

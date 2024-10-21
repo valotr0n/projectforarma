@@ -1,0 +1,52 @@
+/* Стили для секции с таблицей */
+.info-section {
+    padding: 100px 20px;
+    text-align: center;
+}
+
+.info-section h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.info-section p {
+    font-size: 18px;
+    color: #ccc;
+    margin-bottom: 30px;
+}
+
+table {
+    width: 80%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    overflow: hidden;
+}
+
+.styled-table {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.styled-table th, .styled-table td {
+    padding: 12px 15px;
+    text-align: left;
+    color: #f0f0f0;
+}
+
+.styled-table th {
+    background-color: #af0c0c;
+    font-weight: bold;
+}
+
+.styled-table tr {
+    border-bottom: 1px solid #ddd;
+}
+
+.styled-table tr:nth-of-type(even) {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.styled-table tr:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}

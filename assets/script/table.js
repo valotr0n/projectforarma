@@ -5,7 +5,7 @@
 
   function initClient() {
     gapi.client.init({
-      apiKey: 'AIzaSyACWC0tqYNds-ErRC-FkUBqx3j0vVRpcFk',  // Вставьте ваш API-ключ
+      apiKey: 'AIzaSyACWC0tqYNds-ErRC-FkUBqx3j0vVRpcFk', 
       discoveryDocs: ['https://sheets.googleapis.com/$discovery/rest?version=v4'],
     }).then(function () {
       loadSheetData();
