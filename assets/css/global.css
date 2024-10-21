@@ -1,4 +1,4 @@
-/* Сброс стилей и общие правила */
+/* Общий CSS файл для всех страниц*/
 .hero-section, .news-section, .aboutus-section {
     animation: fadeIn 1s ease-in-out;
 }

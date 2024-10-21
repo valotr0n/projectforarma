@@ -1,12 +1,71 @@
-/* Стили для главной страницы */
+/* Общая стилистика для страницы - кнопки, шрифт, плавный скролл */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
+body {
+    font-family: 'Kanit', sans-serif;
+    background-color: #000;
+    color: white;
+    overflow-x: hidden;
+    min-height: 100vh;
+    transition: opacity 0.5s ease-in-out;
+}
+
+body.fade-out {
+    opacity: 0;
+    pointer-events: none;
+}
+
+header {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    z-index: 10;
+}
+
+.logo {
+    font-size: 30px;
+    font-weight: bold;
+    color: white;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.nav-links li {
+    margin-left: 20px;
+}
+
+.nav-links li a {
+    color: white;
+    text-decoration: none;
+    font-size: 25px;
+    transition: color 0.3s ease-in-out;
+}
+
+.nav-links li a:hover {
+    color: #ccc;
+}
+
+
+/* --------------------------------------------------------------------------------------------------------------  */
+/* основные стили фоны и так далее  */
 .hero-section {
-    background-image: url('/assets/img/I_need_to_make_a_picture_for_the_main_page_of_the_\ \(2\).jpg');
+    background-image: url('/assets/img/bg.jpg');
     background-size: cover;
     background-position: center;
     height: 100vh;
     position: relative;
-    z-index: 1;
 }
 
 .overlay {
@@ -16,54 +75,137 @@
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.5);
-    z-index: 2;
 }
 
 .content {
     position: absolute;
     top: 40%;
     left: 10%;
-    text-align: left;
     color: white;
-    z-index: 3;
 }
 
+/* --------------------------------------------------------------------------------------------------------------  */
+/* Переход между секциями */
 .section-divider {
     height: 50px;
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.7));
-    margin-top: 50px;
-    margin-bottom: 50px;
-    z-index: 3;
+    margin: 50px 0;
 }
 
+/* --------------------------------------------------------------------------------------------------------------  */
+/* Стили для новостной ленты */
 .news-section {
     padding: 100px 0;
     text-align: center;
 }
 
-.news-content {
-    max-width: 800px;
+.news-section h2 {
+    font-size: 36px;
+    margin-bottom: 50px; /* Отступ для заголовка */
+}
+
+/* Выровненная секция с карточками новостей */
+.news-items {
+    display: flex;
+    flex-direction: column; /* Ставим карточки в одну колонку */
+    gap: 20px; /* Отступы между карточками */
+    max-width: 100%; /* Ограничение ширины снимаем */
     margin: 0 auto;
-    background-color: rgba(61, 55, 55, 0.6);
-    padding: 20px;
+    padding: 0 20px; /* Отступы по бокам для равномерности */
+}
+
+/* Фильтр новостей */
+.news-filter {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.news-filter button {
+    background: linear-gradient(135deg, #3a3a3a, #1f1f1f);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 10px;
+    cursor: pointer;
+    border-radius: 25px;
+    font-size: 20px;
+    transition: all 0.3s ease;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.4);
+    position: relative;
+}
+
+.news-filter button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0));
+    opacity: 0.1;
+    border-radius: 25px;
+}
+
+.news-filter button:hover {
+    background: linear-gradient(135deg, #4e4e4e, #2a2a2a);
+    transform: translateY(-3px);
+    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.5);
+}
+
+.news-filter button:active {
+    transform: translateY(0);
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.4);
+}
+
+/* Новостные карточки */
+.card {
+    display: flex;
+    background-color: rgba(61, 55, 55, 0.8);
+    width: 100%;
+    margin: 20px 0;
     border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s;
+    box-sizing: border-box;
+    padding: 20px; /* Увеличиваем внутренний отступ для текста */
+    justify-content: space-between; /* Равномерное размещение внутри карточки */
 }
 
-.news-content p {
-    font-size: 18px;
+.card:hover {
+    transform: scale(1.02); /* Легкое увеличение карточки при наведении */
+}
+
+.card img {
+    width: 250px; /*ширина изображения */
+    height: auto;
+    object-fit: cover; /* Изображение маштабируется и покрывает весь блок */
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.news-text {
+    padding-left: 20px; /* Отступ между текстом и изображением */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+    flex-grow: 1;
+}
+
+.news-text h3 {
+    margin: 0 0 10px 0;
+    font-size: 24px; /* Увеличиваем шрифт заголовка */
+    color: #fff;
+}
+
+.news-text p {
+    font-size: 18px; /* Увеличиваем размер шрифта для текста */
+    color: #ddd;
+    margin: 0;
     line-height: 1.6;
-    color: #f0f0f0;
 }
 
-.hero-section, .news-section, .aboutus-section {
-    animation: fadeIn 1s ease-in-out;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
+/* Анимация появления новостей */
 .fade-in {
     opacity: 0;
     transform: translateY(20px);
@@ -74,4 +216,3 @@
     opacity: 1;
     transform: translateY(0);
 }
-

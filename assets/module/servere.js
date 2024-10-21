@@ -1,3 +1,4 @@
+//файл который отвечает за серверную часть проекта
 import nidemailer from 'nodemailer'
 
 async function  sendMail() {

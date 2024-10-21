@@ -1,3 +1,4 @@
+//анимация перехода секциями страницы (скролл)
 document.addEventListener('DOMContentLoaded', function() {
     const links = document.querySelectorAll('a');
 
@@ -28,6 +29,29 @@ document.addEventListener('DOMContentLoaded', function () {
 
     fadeElements.forEach(element => {
         observer.observe(element);
+    });
+});
+
+document.addEventListener('scroll', function() {
+    let newsItems = document.querySelectorAll('.news-item');
+    newsItems.forEach(item => {
+        if (item.getBoundingClientRect().top < window.innerHeight) {
+            item.classList.add('visible');
+        }
+    });
+});
+
+// Фильтрация новостей
+document.querySelectorAll('.news-filter button').forEach(button => {
+    button.addEventListener('click', () => {
+        const category = button.getAttribute('data-filter');
+        document.querySelectorAll('.news-item').forEach(item => {
+            if (category === 'all' || item.getAttribute('data-category') === category) {
+                item.style.display = 'flex';
+            } else {
+                item.style.display = 'none';
+            }
+        });
     });
 });
 

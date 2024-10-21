@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <link rel="shortcut icon" href = "/assets/img/logo.jpg">
+    <link rel="shortcut icon" href="/assets/img/logo.jpg">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Orion Group</title>
@@ -30,16 +30,41 @@
             <div class="content">
             </div>
         </div>
-    
-        <!-- Градиентный переход между секциями -->
+
         <div class="section-divider"></div>
-    
+
+        <!-- Фильтр новостей -->
+        <div class="news-filter">
+            <button data-filter="all">Все</button>
+            <button data-filter="updates">Обновления</button>
+            <button data-filter="events">Ивенты</button>
+            <button data-filter="announcements">Объявления</button>
+        </div>
+
         <section class="news-section fade-in">
             <h2>Новости сервера</h2>
-            <div class="news-content">
-                <p>Здесь будут отображаться последние обновления и события на сервере.</p>
-                <p>Обновление #1: Обновлён игровой баланс, добавлены новые возможности для игроков, включая новую систему наград и рейтингов.</p>
-                <p>Обновление #2: Исправлены ошибки, связанные с подключением к серверу.</p>
+            <div class="news-items">
+                <div class="news-item card" data-category="updates">
+                    <img src="/assets/img/editor_1605628477710232_0.jpg" alt="Обновление #1">
+                    <div class="news-text">
+                        <h3>Обновление #1</h3>
+                        <p>Обновлён игровой баланс, добавлены новые возможности для игроков, включая новую систему наград и рейтингов.</p>
+                    </div>
+                </div>
+                <div class="news-item card" data-category="events">
+                    <img src="/assets/img/arma3-sniper-800x450.jpg" alt="Ивент #1">
+                    <div class="news-text">
+                        <h3>Ивент #1</h3>
+                        <p>Состоится крупный ивент для всех участников сервера.</p>
+                    </div>
+                </div>
+                <div class="news-item card" data-category="announcements">
+                    <img src="/assets/img/ARMA 3 CDLC_Reaction_forces_release.jpg" alt="Объявление #1">
+                    <div class="news-text">
+                        <h3>Объявление #1</h3>
+                        <p>Планируется техническое обслуживание сервера в ближайшие выходные.</p>
+                    </div>
+                </div>
             </div>
         </section>
     </main>    

@@ -3,6 +3,7 @@
     gapi.load('client', initClient);
   };
 
+  //функция которая отвечает за инизацализацию таблицы
   function initClient() {
     gapi.client.init({
       apiKey: 'AIzaSyACWC0tqYNds-ErRC-FkUBqx3j0vVRpcFk', 
@@ -12,6 +13,7 @@
     });
   }
 
+//функция которая отвечает за подкрузку данных с Google таблицы
   function loadSheetData() {
     gapi.client.sheets.spreadsheets.values.get({
       spreadsheetId: '16Zdhw0WLdkPET8OSU9782QMUUiTQWB7bhHvjsOQSu-0',
@@ -24,6 +26,9 @@
     });
   }
 
+/*функция которая отвечает за динамические изменения в таблицы + иницализация значений , 
+если строка начинается с ОТДЕЛЕНИЯ , создаеться отдельная секция
+*/
 function renderTable(data) {
     const tableBody = document.querySelector('tbody');
     tableBody.innerHTML = ''; // Очищаем таблицу перед загрузкой новых данных
