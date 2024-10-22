@@ -63,8 +63,12 @@ header {
 .hero-section {
     background-image: url('/assets/img/bg.jpg');
     background-size: cover;
+    display: flex;
+    background-repeat: no-repeat;
     background-position: center;
     height: 100vh;
+    justify-content: center;
+    align-items: center;
     position: relative;
 }
 

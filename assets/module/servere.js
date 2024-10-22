@@ -1,22 +1,57 @@
-//файл который отвечает за серверную часть проекта
-import nidemailer from 'nodemailer'
+const express = require('express');
+const nodemailer = require('nodemailer');
+const bodyParser = require('body-parser');
+const cors = require('cors');  // Подключаем cors
 
-async function  sendMail() {
-    let transporter = nodemailer.createTransport({
-        host: 'smpt.mail.ru',
-        port: 465,
-        secure: true,
-        auth: {
-            user : 'stax1x@bk.ru',
-            pass: 'PASSSS',
-        },
+
+const app = express();
+const port = 3000;
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
+
+app.use(cors({
+    origin: 'http://127.0.0.1:5500', // Разрешаем только этот источник
+    methods: ['GET', 'POST'],        // Разрешаем только GET и POST методы
+    allowedHeaders: ['Content-Type'] // Разрешаем заголовки Content-Type
+}));
+// Настройки для Nodemailer (укажите свои данные)
+const transporter = nodemailer.createTransport({
+    host: 'smtp.mail.ru',  // правильный SMTP хост для Mail.ru
+    port: 465,  // используйте порт 465 для SSL-соединений
+    secure: true, // true для порта 465, false для других портов
+    auth: {
+        user: 'mail new', // ваша почта
+        pass: '_______',  // пароль или app password
+    }
+});
+// app.get('/', (req, res) => {
+//     //ТУТ НАДО НАПИСАТЬ file.send(index.html ) или как-то так
+// })
+// Обработка формы
+app.post('/send-email', (req, res) => {
+    const { email, message } = req.body;
+
+    const mailOptions = {
+        from: '__________', //почта с которой приходит сообщение 
+        to: '________', // почта администратора
+        subject: 'Сообщение от пользователя сайта',
+        text: `Сообщение от: ${email}\n\n${message}`
+    };
+
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+            console.log(error);
+            res.status(500).send('Ошибка при отправке сообщения');
+        } else {
+            console.log('Email sent: ' + info.response);
+            res.status(200).send('Сообщение успешно отправлено');
+        }
     });
-    let result = await transporter.sendMail({
-        from : '"Node.js" <stax1x@bk.ru>',
-        to : '....., ....'
-        subjects : 'Test',
-        text : `Имя: Email:`
-    });
-    console.log(result);  
-}
-sendMail()
+});
+
+// Запуск сервера
+app.listen(port, () => {
+    console.log(`Сервер запущен на http://localhost:${port}`);
+});

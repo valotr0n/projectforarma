@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="/assets/css/about.css">
 </head>
 <body>
+    <script src="/assets/script/main.js" defer></script>
     <header>
         <nav>
             <div class="logo">72thCompany</div>
@@ -45,14 +46,14 @@
             <!-- Форма для отправки сообщения администратору -->
             <div class="info-block">
                 <h3>Связаться с администрацией</h3>
-                <form id="contact-form" action="/send-email" method="POST">
+                <form id="contact-form" action="http://localhost:3000/send-email" method="POST">
                     <label for="email">Ваша почта:</label>
                     <input type="email" id="email" name="email" required placeholder="Введите вашу почту">
                     
                     <label for="message">Сообщение:</label>
                     <textarea id="message" name="message" required placeholder="Введите ваше сообщение"></textarea>
                     
-                    <button type="submit">Отправить</button>
+                    <button type="submit" class="button_submit">Отправить</button>
                 </form>
             </div>
         </section>
