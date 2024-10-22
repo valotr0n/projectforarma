@@ -105,17 +105,17 @@ header {
 
 .news-section h2 {
     font-size: 36px;
-    margin-bottom: 50px; /* Отступ для заголовка */
+    margin-bottom: 50px; 
 }
 
 /* Выровненная секция с карточками новостей */
 .news-items {
     display: flex;
-    flex-direction: column; /* Ставим карточки в одну колонку */
-    gap: 20px; /* Отступы между карточками */
-    max-width: 100%; /* Ограничение ширины снимаем */
+    flex-direction: column; 
+    gap: 20px; 
+    max-width: 100%; 
     margin: 0 auto;
-    padding: 0 20px; /* Отступы по бокам для равномерности */
+    padding: 0 20px; 
 }
 
 /* Фильтр новостей */
@@ -172,23 +172,23 @@ header {
     overflow: hidden;
     transition: transform 0.3s;
     box-sizing: border-box;
-    padding: 20px; /* Увеличиваем внутренний отступ для текста */
-    justify-content: space-between; /* Равномерное размещение внутри карточки */
+    padding: 20px; 
+    justify-content: space-between; 
 }
 
 .card:hover {
-    transform: scale(1.02); /* Легкое увеличение карточки при наведении */
+    transform: scale(1.02); 
 }
 
 .card img {
-    width: 250px; /*ширина изображения */
+    width: 250px; 
     height: auto;
-    object-fit: cover; /* Изображение маштабируется и покрывает весь блок */
+    object-fit: cover; 
     border-right: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .news-text {
-    padding-left: 20px; /* Отступ между текстом и изображением */
+    padding-left: 20px; 
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -198,12 +198,12 @@ header {
 
 .news-text h3 {
     margin: 0 0 10px 0;
-    font-size: 24px; /* Увеличиваем шрифт заголовка */
+    font-size: 24px; 
     color: #fff;
 }
 
 .news-text p {
-    font-size: 18px; /* Увеличиваем размер шрифта для текста */
+    font-size: 18px; 
     color: #ddd;
     margin: 0;
     line-height: 1.6;

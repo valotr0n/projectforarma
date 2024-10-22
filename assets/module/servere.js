@@ -1,7 +1,7 @@
 const express = require('express');
 const nodemailer = require('nodemailer');
 const bodyParser = require('body-parser');
-const cors = require('cors');  // Подключаем cors
+const cors = require('cors'); //Cross-origin resource sharing
 
 
 const app = express();
@@ -12,18 +12,17 @@ app.use(bodyParser.json());
 
 
 app.use(cors({
-    origin: 'http://127.0.0.1:5500', // Разрешаем только этот источник
-    methods: ['GET', 'POST'],        // Разрешаем только GET и POST методы
-    allowedHeaders: ['Content-Type'] // Разрешаем заголовки Content-Type
+    origin: 'http://127.0.0.1:5500', 
+    methods: ['GET', 'POST'],        
+    allowedHeaders: ['Content-Type'] 
 }));
-// Настройки для Nodemailer (укажите свои данные)
 const transporter = nodemailer.createTransport({
-    host: 'smtp.mail.ru',  // правильный SMTP хост для Mail.ru
-    port: 465,  // используйте порт 465 для SSL-соединений
-    secure: true, // true для порта 465, false для других портов
+    host: 'smtp.mail.ru',  
+    port: 465,  
+    secure: true, 
     auth: {
-        user: 'mail new', // ваша почта
-        pass: '_______',  // пароль или app password
+        user: 'почта с которой будут присылаться сообщения', 
+        pass: 'app pasword создается на сайте mail.ru',  
     }
 });
 // app.get('/', (req, res) => {
@@ -34,8 +33,8 @@ app.post('/send-email', (req, res) => {
     const { email, message } = req.body;
 
     const mailOptions = {
-        from: '__________', //почта с которой приходит сообщение 
-        to: '________', // почта администратора
+        from: 'dasdasdas@mail.ru', //почта откуда будут приходить сообщения
+        to: 'armaadmin@mail.ru', //почта куда будут приходить сообщения 
         subject: 'Сообщение от пользователя сайта',
         text: `Сообщение от: ${email}\n\n${message}`
     };

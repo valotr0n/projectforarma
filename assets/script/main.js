@@ -1,25 +1,24 @@
-//анимация перехода секциями страницы (скролл)
 document.addEventListener('DOMContentLoaded', function() {
+    // Обработчик кликов по ссылкам
     const links = document.querySelectorAll('a');
+    const fadeElements = document.querySelectorAll('.fade-in');
+    const newsItems = document.querySelectorAll('.news-item');
 
-    for (let i = 0; i < links.length; i++) {
-        links[i].addEventListener('click', function(event) {
+    // Оптимизация: объединение всех операций после загрузки страницы
+    links.forEach(link => {
+        link.addEventListener('click', function(event) {
             event.preventDefault();
-            const targetUrl = this.getAttribute('href');
+            const targetUrl = link.getAttribute('href');
 
             document.body.classList.add('fade-out');
-
-            setTimeout(function() {
+            setTimeout(() => {
                 window.location.href = targetUrl;
-            }, 600); // Тайм-аут для завершения анимации перед переходом
+            }, 600);
         });
-    }
-});
-// Анимация при прокрутке для плавного появления секций
-document.addEventListener('DOMContentLoaded', function () {
-    const fadeElements = document.querySelectorAll('.fade-in');
+    });
 
-    const observer = new IntersectionObserver((entries) => {
+    // Анимация для элементов при прокрутке
+    const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
@@ -27,54 +26,70 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }, { threshold: 0.1 });
 
-    fadeElements.forEach(element => {
-        observer.observe(element);
-    });
-});
+    fadeElements.forEach(element => observer.observe(element));
 
-document.addEventListener('scroll', function() {
-    let newsItems = document.querySelectorAll('.news-item');
-    newsItems.forEach(item => {
-        if (item.getBoundingClientRect().top < window.innerHeight) {
-            item.classList.add('visible');
+    // Дебаунс для прокрутки
+    let scrollTimeout;
+    document.addEventListener('scroll', function() {
+        if (scrollTimeout) {
+            clearTimeout(scrollTimeout);
         }
-    });
-});
 
-// Фильтрация новостей
-document.querySelectorAll('.news-filter button').forEach(button => {
-    button.addEventListener('click', () => {
-        const category = button.getAttribute('data-filter');
-        document.querySelectorAll('.news-item').forEach(item => {
-            if (category === 'all' || item.getAttribute('data-category') === category) {
-                item.style.display = 'flex';
-            } else {
-                item.style.display = 'none';
-            }
+        scrollTimeout = setTimeout(() => {
+            newsItems.forEach(item => {
+                if (item.getBoundingClientRect().top < window.innerHeight) {
+                    item.classList.add('visible');
+                }
+            });
+        }, 100); 
+    });
+
+    // Фильтрация новостей
+    document.querySelectorAll('.news-filter button').forEach(button => {
+        button.addEventListener('click', () => {
+            const category = button.getAttribute('data-filter');
+            newsItems.forEach(item => {
+                item.style.display = (category === 'all' || item.getAttribute('data-category') === category) ? 'flex' : 'none';
+            });
         });
     });
-});
 
-// document.querySelector(".button_submit").addEventListener("click", () =>{
-//     alert('Ваше сообщение было отправлено')
-// })
-document.getElementById('contact-form').addEventListener('submit', function(event) {
-    event.preventDefault();  // Остановить стандартное поведение формы (перезагрузка страницы)
-    
-    // Получаем данные формы
-    const email = document.getElementById('email');
-    const message = document.getElementById('message');
-    email.innerHTML = '';
-    message.innerHTML = '';
-    // Отправляем запрос на сервер через fetch()
-    fetch('http://localhost:3000/send-email', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            email: email.value,
-            message: message.value
-        })
-    })
+    // Форма отправки сообщения с async/await
+    document.getElementById('contact-form').addEventListener('submit', async function(event) {
+        event.preventDefault();
+
+        const email = document.getElementById('email').value;
+        const message = document.getElementById('message').value;
+        const submitButton = document.querySelector('.button_submit');
+        
+        try {
+            const response = await fetch('http://localhost:3000/send-email', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ email, message })
+            });
+
+            if (response.ok) {
+                document.getElementById('email').value = '';
+                document.getElementById('message').value = '';
+                alert('Ваше сообщение было отправлено');
+
+                // Блокируем кнопку
+                submitButton.disabled = true;
+                submitButton.textContent = 'Подождите 90 секунд...';
+
+                setTimeout(() => {
+                    submitButton.disabled = false;
+                    submitButton.textContent = 'Отправить';
+                }, 90000);
+            } else {
+                throw new Error('Ошибка при отправке сообщения');
+            }
+        } catch (error) {
+            console.error('Ошибка:', error);
+            alert('Ошибка при отправке сообщения');
+        }
+    });
 });
