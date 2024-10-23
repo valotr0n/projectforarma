@@ -21,13 +21,11 @@ const transporter = nodemailer.createTransport({
     port: 465,  
     secure: true, 
     auth: {
-        user: 'почта с которой будут присылаться сообщения', 
+        user: 'почта с которой будут присылаться сообщения @dasdasdas@mail.ru',//почта должна быть той же что с примера снизу (from: ...) 
         pass: 'app pasword создается на сайте mail.ru',  
     }
 });
-// app.get('/', (req, res) => {
-//     //ТУТ НАДО НАПИСАТЬ file.send(index.html ) или как-то так
-// })
+
 // Обработка формы
 app.post('/send-email', (req, res) => {
     const { email, message } = req.body;
