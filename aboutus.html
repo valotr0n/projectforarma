@@ -48,10 +48,11 @@
                 <h3>Связаться с администрацией</h3>
                 <form id="contact-form" action="http://localhost:3000/send-email" method="POST">
                     <label for="email">Ваша почта:</label>
-                    <input type="email" id="email" name="email" required placeholder="Введите вашу почту">
+                    <input type="email" id="email" name="email" required placeholder="Введите вашу почту" 
+                           pattern="[a-zA-Z0-9._%+-]+@(mail\.ru|yandex\.ru|gmail\.com)$" title="Введите почту на mail.ru, yandex.ru или gmail.com">
                     
                     <label for="message">Сообщение:</label>
-                    <textarea id="message" name="message" required placeholder="Введите ваше сообщение"></textarea>
+                    <input id="message" name="message" required placeholder="Введите ваше сообщение"></input>
                     
                     <button type="submit" class="button_submit">Отправить</button>
                 </form>

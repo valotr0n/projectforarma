@@ -93,3 +93,22 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+document.getElementById("message").addEventListener("input", function (event) {
+    const inputField = event.target;
+    const cursorPosition = inputField.selectionStart;
+    inputField.value = inputField.value.replace(/[^а-яА-ЯёЁ\s]/g, '');
+    inputField.setSelectionRange(cursorPosition, cursorPosition);
+});
+
+
+document.getElementById("contact-form").addEventListener("submit", function (event) {
+    const emailInput = document.getElementById("email");
+    const allowedDomains = ["mail.ru", "yandex.ru", "gmail.com"];
+    const emailDomain = emailInput.value.split("@")[1];
+
+    if (!allowedDomains.includes(emailDomain)) {
+        event.preventDefault();
+        alert("Пожалуйста, используйте почту с доменом mail.ru, yandex.ru или gmail.com");
+    }
+});
