@@ -13,6 +13,17 @@ function initClient() {
   });
 }
 
+// Добавьте в начало файла
+function hidePreloader() {
+    const preloader = document.querySelector('.preloader');
+    if (preloader) {
+        preloader.classList.add('fade-out');
+        setTimeout(() => {
+            preloader.style.display = 'none';
+        }, 500);
+    }
+}
+
 // Загрузка данных с Google таблицы
 async function loadSheetData() {
   try {
@@ -25,11 +36,18 @@ async function loadSheetData() {
       if (data && data.length > 0) {
           renderTable(data);
       } else {
-          console.log('Данные отсутствуют или некорректны');
+          handleError('Данные отсутствуют или некорректны');
       }
   } catch (error) {
-      console.error('Ошибка при загрузке данных:', error);
+      handleError(error);
   }
+}
+
+// Добавьте обработчик ошибок
+function handleError(error) {
+    console.error('Ошибка:', error);
+    hidePreloader(); // Скрываем прелоадер даже при ошибке
+    // Можно добавить отображение сообщения об ошибке для пользователя
 }
 
 // Рендеринг таблицы
@@ -68,6 +86,9 @@ function renderTable(data) {
   });
 
   tableBody.appendChild(fragment); // Добавляем все элементы 
+
+  // Скрываем прелоадер после загрузки данных
+  hidePreloader();
 }
 
 function createHeaderRow() {
