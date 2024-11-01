@@ -1,21 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Обработчик кликов по ссылкам
+    // Общие обработчики для всех страниц
     const links = document.querySelectorAll('a');
     const fadeElements = document.querySelectorAll('.fade-in');
-    const newsItems = document.querySelectorAll('.news-item');
-
-    // Оптимизация: объединение всех операций после загрузки страницы
-    links.forEach(link => {
-        link.addEventListener('click', function(event) {
-            event.preventDefault();
-            const targetUrl = link.getAttribute('href');
-
-            document.body.classList.add('fade-out');
-            setTimeout(() => {
-                window.location.href = targetUrl;
-            }, 600);
-        });
-    });
 
     // Анимация для элементов при прокрутке
     const observer = new IntersectionObserver(entries => {
@@ -28,87 +14,96 @@ document.addEventListener('DOMContentLoaded', function() {
 
     fadeElements.forEach(element => observer.observe(element));
 
-    // Дебаунс для прокрутки
-    let scrollTimeout;
-    document.addEventListener('scroll', function() {
-        if (scrollTimeout) {
-            clearTimeout(scrollTimeout);
+    // Определяем текущую страницу
+    const currentPage = window.location.pathname;
+
+    // Обработчики только для главной страницы (main.html)
+    if (currentPage.includes('main.html') || currentPage === '/') {
+        // Обработчик для прокрутки к новостям
+        const scrollToNewsButton = document.querySelector('.scroll-to-news');
+        if (scrollToNewsButton) {
+            scrollToNewsButton.addEventListener('click', function() {
+                const newsSection = document.querySelector('.news-section');
+                newsSection.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            });
         }
 
-        scrollTimeout = setTimeout(() => {
-            newsItems.forEach(item => {
-                if (item.getBoundingClientRect().top < window.innerHeight) {
-                    item.classList.add('visible');
-                }
-            });
-        }, 100); 
-    });
-
-    // Фильтрация новостей
-    document.querySelectorAll('.news-filter button').forEach(button => {
-        button.addEventListener('click', () => {
-            const category = button.getAttribute('data-filter');
-            newsItems.forEach(item => {
-                item.style.display = (category === 'all' || item.getAttribute('data-category') === category) ? 'flex' : 'none';
+        // Обработчик для перехода на страницу "О нас"
+        const redirectButtons = document.querySelectorAll('.redirect-to-about');
+        redirectButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                document.body.classList.add('fade-out');
+                setTimeout(() => {
+                    window.location.href = 'aboutus.html';
+                }, 600);
             });
         });
-    });
 
-    // Форма отправки сообщения с async/await
-    document.getElementById('contact-form').addEventListener('submit', async function(event) {
-        event.preventDefault();
+        // Фильтрация новостей
+        const newsItems = document.querySelectorAll('.news-item');
+        document.querySelectorAll('.news-filter button').forEach(button => {
+            button.addEventListener('click', () => {
+                const category = button.getAttribute('data-filter');
+                newsItems.forEach(item => {
+                    item.style.display = (category === 'all' || item.getAttribute('data-category') === category) ? 'flex' : 'none';
+                });
+            });
+        });
+    }
 
-        const email = document.getElementById('email').value;
-        const message = document.getElementById('message').value;
-        const submitButton = document.querySelector('.button_submit');
-        
-        try {
-            const response = await fetch('http://localhost:3000/send-email', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ email, message })
+    // Обработчики только для страницы "О нас" (aboutus.html)
+    if (currentPage.includes('aboutus.html')) {
+        const contactForm = document.getElementById('contact-form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', async function(event) {
+                event.preventDefault();
+
+                const email = document.getElementById('email').value;
+                const message = document.getElementById('message').value;
+                const submitButton = document.querySelector('.button_submit');
+                
+                try {
+                    const response = await fetch('http://localhost:3000/send-email', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ email, message })
+                    });
+
+                    if (response.ok) {
+                        document.getElementById('email').value = '';
+                        document.getElementById('message').value = '';
+                        alert('Ваше сообщение было отправлено');
+
+                        submitButton.disabled = true;
+                        submitButton.textContent = 'Подождите 90 секунд...';
+
+                        setTimeout(() => {
+                            submitButton.disabled = false;
+                            submitButton.textContent = 'Отправить';
+                        }, 90000);
+                    } else {
+                        throw new Error('Ошибка при отправке сообщения');
+                    }
+                } catch (error) {
+                    console.error('Ошибка:', error);
+                    alert('Ошибка при отправке сообщения');
+                }
             });
 
-            if (response.ok) {
-                document.getElementById('email').value = '';
-                document.getElementById('message').value = '';
-                alert('Ваше сообщение было отправлено');
-
-                // Блокируем кнопку
-                submitButton.disabled = true;
-                submitButton.textContent = 'Подождите 90 секунд...';
-
-                setTimeout(() => {
-                    submitButton.disabled = false;
-                    submitButton.textContent = 'Отправить';
-                }, 90000);
-            } else {
-                throw new Error('Ошибка при отправке сообщения');
+            const messageInput = document.getElementById('message');
+            if (messageInput) {
+                messageInput.addEventListener('input', function(event) {
+                    const inputField = event.target;
+                    const cursorPosition = inputField.selectionStart;
+                    inputField.value = inputField.value.replace(/[^а-яА-ЯёЁ\s]/g, '');
+                    inputField.setSelectionRange(cursorPosition, cursorPosition);
+                });
             }
-        } catch (error) {
-            console.error('Ошибка:', error);
-            alert('Ошибка при отправке сообщения');
         }
-    });
-});
-
-document.getElementById("message").addEventListener("input", function (event) {
-    const inputField = event.target;
-    const cursorPosition = inputField.selectionStart;
-    inputField.value = inputField.value.replace(/[^а-яА-ЯёЁ\s]/g, '');
-    inputField.setSelectionRange(cursorPosition, cursorPosition);
-});
-
-
-document.getElementById("contact-form").addEventListener("submit", function (event) {
-    const emailInput = document.getElementById("email");
-    const allowedDomains = ["mail.ru", "yandex.ru", "gmail.com"];
-    const emailDomain = emailInput.value.split("@")[1];
-
-    if (!allowedDomains.includes(emailDomain)) {
-        event.preventDefault();
-        alert("Пожалуйста, используйте почту с доменом mail.ru, yandex.ru или gmail.com");
     }
 });

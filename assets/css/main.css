@@ -30,38 +30,10 @@ header {
     padding: 0 20px;
     z-index: 10;
 }
-
-.logo {
-    font-size: 30px;
-    font-weight: bold;
-    color: white;
-}
-
-.nav-links {
-    list-style: none;
-    display: flex;
-}
-
-.nav-links li {
-    margin-left: 20px;
-}
-
-.nav-links li a {
-    color: white;
-    text-decoration: none;
-    font-size: 25px;
-    transition: color 0.3s ease-in-out;
-}
-
-.nav-links li a:hover {
-    color: #ccc;
-}
-
-
 /* --------------------------------------------------------------------------------------------------------------  */
 /* основные стили фоны и так далее  */
 .hero-section {
-    background-image: url('/assets/img/bg.jpg');
+    background-image: url('/assets/img/fefe7b40f097b3db4882836fe8d30579.jpeg');
     background-size: cover;
     display: flex;
     background-repeat: no-repeat;
@@ -83,9 +55,122 @@ header {
 
 .content {
     position: absolute;
-    top: 40%;
-    left: 10%;
+    top: 15%;
+    left: 1%;
     color: white;
+    z-index: 1;
+    animation: slideIn 1s ease-out;
+}
+
+.content h1 {
+    font-size: 3.5em;
+    margin-bottom: 25px;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
+    background: linear-gradient(45deg, #af1414, #ff3333);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+.content .subtitle {
+    font-size: 1.8em;
+    margin-bottom: 40px;
+    color: #e6e6e6;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    animation: fadeIn 0.8s ease-out 0.5s forwards;
+}
+
+.content .server-info {
+    font-size: 1.2em;
+    color: #cccccc;
+}
+
+.content .server-info p {
+    margin: 20px 0;
+    padding: 10px 20px;
+    background: rgba(175, 20, 20, 0.1);
+    border-radius: 15px;
+    backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    transform: translateX(-20px);
+    opacity: 0;
+    animation: slideInFromLeft 0.5s ease-out forwards;
+    cursor: pointer;
+}
+
+.server-info p:nth-child(1) { animation-delay: 0.7s; }
+.server-info p:nth-child(2) { animation-delay: 0.9s; }
+.server-info p:nth-child(3) { animation-delay: 1.1s; }
+
+.server-info p:hover {
+    background: rgba(175, 20, 20, 0.2);
+    transform: translateX(10px);
+    transition: all 0.3s ease;
+}
+
+.server-info i {
+    font-size: 1.4em;
+    color: #af1414;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(175, 20, 20, 0.3);
+    transition: all 0.3s ease;
+}
+
+.server-info p:hover i {
+    transform: rotate(360deg);
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 15px rgba(175, 20, 20, 0.5);
+}
+
+.scroll-to-news:hover,
+.redirect-to-about:hover {
+    background: rgba(175, 20, 20, 0.2);
+    transform: translateX(10px);
+    transition: all 0.3s ease;
+}
+
+/* Добавляем анимации */
+@keyframes slideIn {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideInFromLeft {
+    from {
+        transform: translateX(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 5px rgba(175, 20, 20, 0.5),
+                     0 0 10px rgba(175, 20, 20, 0.3);
+    }
+    to {
+        text-shadow: 0 0 10px rgba(175, 20, 20, 0.7),
+                     0 0 20px rgba(175, 20, 20, 0.5);
+    }
 }
 
 /* --------------------------------------------------------------------------------------------------------------  */
@@ -219,4 +304,92 @@ header {
 .fade-in.visible {
     opacity: 1;
     transform: translateY(0);
+}
+
+/* Добавляем стили для индикатора онлайна */
+.online-status {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 30px;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 10px 20px;
+    border-radius: 20px;
+    backdrop-filter: blur(5px);
+}
+
+.pulse-dot {
+    width: 12px;
+    height: 12px;
+    background-color: #ff3333;
+    border-radius: 50%;
+    position: relative;
+    animation: pulse 2s infinite;
+}
+
+.online-count {
+    color: #ffffff;
+    font-size: 1.2em;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Добавляем стили для кнопки присоединиться */
+.join-game {
+    margin-top: 40px;
+}
+
+.join-game a {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(45deg, #af1414, #ff3333);
+    color: white;
+    text-decoration: none;
+    padding: 15px 30px;
+    border-radius: 25px;
+    font-size: 1.2em;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(175, 20, 20, 0.3);
+}
+
+.join-game a:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(175, 20, 20, 0.5);
+    background: linear-gradient(45deg, #ff3333, #af1414);
+}
+
+.join-game i {
+    font-size: 1.2em;
+    transition: transform 0.3s ease;
+}
+
+.join-game a:hover i {
+    transform: translateX(5px);
+}
+
+/* Анимация пульсации */
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 51, 51, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(255, 51, 51, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 51, 51, 0);
+    }
+}
+
+/* Медиа-запрос для адаптивности */
+@media (max-width: 768px) {
+    .online-status {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .join-game a {
+        width: 100%;
+        justify-content: center;
+    }
 }

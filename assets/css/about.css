@@ -1,63 +1,194 @@
 /* Стили для страницы о нас */
-.aboutus-section {
-    padding: 100px 20px;
+.hero-banner {
+    height: 40vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
+    padding: 20px;
 }
 
-.aboutus-section h2 {
-    font-size: 28px;
+.glow-text {
+    font-size: 3em;
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255, 51, 51, 0.7);
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+.subtitle {
+    font-size: 1.5em;
+    color: #ccc;
+    margin-top: 20px;
+}
+
+.aboutus-section {
+    padding: 50px 20px;
+}
+
+/* Стили для социальных карточек */
+.social-links {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 100px auto 0px;
+    padding: 20px;
+}
+
+.social-card {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    transition: transform 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+
+.social-card:hover {
+    transform: translateY(-10px);
+}
+
+.social-card i {
+    font-size: 3em;
+    margin-bottom: 20px;
+    color: #af1414;
+    animation: bounce 2s infinite;
+}
+
+.social-card h3 {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+.social-card p {
+    color: #ccc;
     margin-bottom: 20px;
 }
 
-.aboutus-section .info-block {
-    background-color: rgba(255, 255, 255, 0.1);
-    padding: 20px;
-    margin: 20px auto;
-    max-width: 600px;
-    border-radius: 10px;
-    color: #f0f0f0;
+.hover-effect {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    background: linear-gradient(45deg, #af1414, #ff3333);
+    transition: all 0.3s ease;
 }
 
-.aboutus-section h3 {
-    font-size: 24px;
-    margin-bottom: 10px;
+.hover-effect:hover {
+    transform: translateX(5px);
+    background: linear-gradient(45deg, #ff3333, #af1414);
 }
 
-/* Стили для отправки сообщений пользователем */
-#contact-form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+/* Стили для формы контакта */
+.contact-section {
     max-width: 600px;
     margin: 0 auto;
-    padding: 20px;
-    background-color: rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+}
+
+.contact-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.contact-header i {
+    font-size: 2em;
+    color: #af1414;
+}
+
+.contact-header h2 {
+    font-size: 2em;
+    color: #fff;
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.input-group i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #af1414;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 15px 15px 15px 45px;
+    border: none;
     border-radius: 10px;
-    color: #f0f0f0;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    font-size: 1em;
+    transition: all 0.3s ease;
 }
 
-#contact-form label {
-    font-size: 18px;
+.input-group input:focus {
+    background: rgba(255, 255, 255, 0.15);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(175, 20, 20, 0.5);
 }
 
-#contact-form input,
-#contact-form textarea {
-    padding: 10px;
-    border-radius: 5px;
+.button_submit {
+    width: 100%;
+    padding: 15px;
     border: none;
-    font-size: 16px;
-}
-
-#contact-form button {
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    background-color: #bd241f;
+    border-radius: 10px;
+    background: linear-gradient(45deg, #af1414, #ff3333);
     color: white;
-    font-size: 18px;
+    font-size: 1.1em;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: all 0.3s ease;
 }
 
-#contact-form button:hover {
-    background-color: #bd241f;
+.button_submit:hover {
+    background: linear-gradient(45deg, #ff3333, #af1414);
+    transform: translateY(-2px);
+}
+
+/* Анимации */
+@keyframes glow {
+    from {
+        text-shadow: 0 0 10px rgba(255, 51, 51, 0.7);
+    }
+    to {
+        text-shadow: 0 0 20px rgba(255, 51, 51, 0.9),
+                     0 0 30px rgba(255, 51, 51, 0.7);
+    }
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Медиа-запросы */
+@media (max-width: 768px) {
+    .glow-text {
+        font-size: 2em;
+    }
+    
+    .social-links {
+        grid-template-columns: 1fr;
+    }
+    
+    .contact-section {
+        padding: 20px;
+    }
 }

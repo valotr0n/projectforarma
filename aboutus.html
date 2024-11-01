@@ -7,12 +7,14 @@
     <title>О нас</title>
     <link rel="stylesheet" href="/assets/css/global.css">
     <link rel="stylesheet" href="/assets/css/about.css">
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.1.0/uicons-bold-straight/css/uicons-bold-straight.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.1.0/uicons-brands/css/uicons-brands.css'>
 </head>
 <body>
     <script src="/assets/script/main.js" defer></script>
     <header>
         <nav>
-            <div class="logo">72thCompany</div>
+            <div class="logo">Orion Group</div>
             <ul class="nav-links">
                 <li><a href="main.html">Главная</a></li>
                 <li><a href="info.html">Таблица</a></li>
@@ -23,38 +25,62 @@
     
     <main>
         <section class="aboutus-section">
-            <h2>Информация о сервере</h2>
-            <div class="info-block">
-                <h3>Discord сервера</h3>
-                <p>
-                    <a href="https://discord.gg/bdp5v5mA" target="_blank">Перейти в Discord</a>
-                </p>
+            <div class="social-links">
+                <div class="social-card discord">
+                    <i class="fi fi-brands-discord"></i>
+                    <h3>Discord сервера</h3>
+                    <p>Присоединяйтесь к нашему Discord сообществу</p>
+                    <a href="https://discord.gg/bdp5v5mA" target="_blank" class="hover-effect">
+                        Присоединиться
+                        <i class="fi fi-bs-arrow-right"></i>
+                    </a>
+                </div>
+
+                <div class="social-card vk">
+                    <i class="fi fi-brands-vk"></i>
+                    <h3>Группа ВКонтакте</h3>
+                    <p>Следите за новостями в нашей группе</p>
+                    <a href="https://vk.com/75thcompoanymilsim" class="hover-effect">
+                        Подписаться
+                        <i class="fi fi-bs-arrow-right"></i>
+                    </a>
+                </div>
+
+                <div class="social-card forum">
+                    <i class="fi fi-bs-comments"></i>
+                    <h3>Форум сервера</h3>
+                    <p>Обсуждайте игру на нашем форуме</p>
+                    <a href="https://75thcompany.ru/index.php" target="_blank" class="hover-effect">
+                        Перейти
+                        <i class="fi fi-bs-arrow-right"></i>
+                    </a>
+                </div>
             </div>
-            <div class="info-block">
-                <h3>Группа ВКонтакте</h3>
-                <p>
-                    <a href="https://vk.com/75thcompoanymilsim">Перейти в VK</a>
-                </p>
-            </div>
-            <div class="info-block">
-                <h3>Форум сервера</h3>
-                <p>
-                    <a href="https://75thcompany.ru/index.php" target="_blank">Перейти на форум</a>
-                </p>
-            </div>
-    
-            <!-- Форма для отправки сообщения администратору -->
-            <div class="info-block">
-                <h3>Связаться с администрацией</h3>
+
+            <div class="contact-section">
+                <div class="contact-header">
+                    <i class="fi fi-bs-envelope pulse"></i>
+                    <h2>Связаться с администрацией</h2>
+                </div>
+                
                 <form id="contact-form" action="http://localhost:3000/send-email" method="POST">
-                    <label for="email">Ваша почта:</label>
-                    <input type="email" id="email" name="email" required placeholder="Введите вашу почту" 
-                           pattern="[a-zA-Z0-9._%+-]+@(mail\.ru|yandex\.ru|gmail\.com)$" title="Введите почту на mail.ru, yandex.ru или gmail.com">
+                    <div class="input-group">
+                        <i class="fi fi-bs-at"></i>
+                        <input type="email" id="email" name="email" required 
+                               placeholder="Ваша почта (mail.ru, yandex.ru, gmail.com)"
+                               pattern="[a-zA-Z0-9._%+-]+@(mail\.ru|yandex\.ru|gmail\.com)$">
+                    </div>
                     
-                    <label for="message">Сообщение:</label>
-                    <input id="message" name="message" required placeholder="Введите ваше сообщение"></input>
+                    <div class="input-group">
+                        <i class="fi fi-bs-comment-dots"></i>
+                        <input id="message" name="message" required 
+                               placeholder="Ваше сообщение">
+                    </div>
                     
-                    <button type="submit" class="button_submit">Отправить</button>
+                    <button type="submit" class="button_submit">
+                        <span>Отправить</span>
+                        <i class="fi fi-bs-paper-plane"></i>
+                    </button>
                 </form>
             </div>
         </section>

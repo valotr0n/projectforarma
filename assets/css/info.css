@@ -1,53 +1,171 @@
+/* Стили для баннера */
+.hero-banner {
+    height: 40vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                url('/assets/img/bg.jpg') center/cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.glow-text {
+    font-size: 3.5em;
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255, 51, 51, 0.7);
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+.subtitle {
+    font-size: 1.5em;
+    color: #ccc;
+    margin-top: 20px;
+    opacity: 0;
+    animation: fadeIn 0.8s ease-out 0.5s forwards;
+}
+
 /* Стили для секции с таблицей */
 .info-section {
-    padding: 100px 20px;
-    text-align: center;
+    padding: 50px 20px;
+    max-width: 1200px;
+    margin: 100px auto 0;
 }
 
-.info-section h2 {
-    font-size: 28px;
-    margin-bottom: 20px;
-}
-
-.info-section p {
-    font-size: 18px;
-    color: #ccc;
+.info-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
     margin-bottom: 30px;
+    padding: 20px;
+    background: rgba(175, 20, 20, 0.1);
+    border-radius: 15px;
+    backdrop-filter: blur(5px);
+}
+
+.info-header i {
+    font-size: 2em;
+    color: #af1414;
+    animation: pulse 2s infinite;
+}
+
+.info-header h2 {
+    font-size: 2em;
+    color: #fff;
+}
+
+/* Поиск */
+.search-box {
+    position: relative;
+    margin: 50px 0 30px;
+}
+
+.search-box i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #af1414;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 15px 15px 15px 45px;
+    border: none;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    font-size: 1em;
+    transition: all 0.3s ease;
+}
+
+.search-box input:focus {
+    background: rgba(255, 255, 255, 0.15);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(175, 20, 20, 0.5);
 }
 
 /* Стилизация таблицы */
-table {
-    width: 80%;
-    margin: 0 auto;
-    border-collapse: collapse;
-    overflow: hidden;
+.table-container {
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 15px;
+    padding: 20px;
+    backdrop-filter: blur(10px);
 }
 
 .styled-table {
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-}
-
-.styled-table th, .styled-table td {
-    padding: 12px 15px;
-    text-align: left;
-    color: #f0f0f0;
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 8px;
+    margin: 0 auto;
 }
 
 .styled-table th {
-    background-color: #af0c0c;
-    font-weight: bold;
+    background: linear-gradient(45deg, #af1414, #ff3333);
+    color: white;
+    padding: 15px;
+    text-align: left;
+    font-size: 1.1em;
 }
 
-.styled-table tr {
-    border-bottom: 1px solid #ddd;
+.styled-table td {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 15px;
+    color: #fff;
+    transition: all 0.3s ease;
 }
 
-.styled-table tr:nth-of-type(even) {
-    background-color: rgba(255, 255, 255, 0.05);
+.styled-table tr:hover td {
+    background: rgba(175, 20, 20, 0.1);
+    transform: translateX(5px);
 }
 
-.styled-table tr:hover {
-    background-color: rgba(255, 255, 255, 0.2);
+.division-header {
+    background: linear-gradient(45deg, #000000, #1a1a1a) !important;
+    color: #fff;
+    font-size: 1.2em;
+    text-align: center;
+    padding: 20px !important;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-top: 1px solid rgba(175, 20, 20, 0.5);
+}
+
+/* Анимации */
+@keyframes glow {
+    from {
+        text-shadow: 0 0 10px rgba(255, 51, 51, 0.7);
+    }
+    to {
+        text-shadow: 0 0 20px rgba(255, 51, 51, 0.9),
+                     0 0 30px rgba(255, 51, 51, 0.7);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Медиа-запросы */
+@media (max-width: 768px) {
+    .glow-text {
+        font-size: 2em;
+    }
+    
+    .info-section {
+        padding: 20px;
+    }
+    
+    .styled-table {
+        font-size: 0.9em;
+    }
 }

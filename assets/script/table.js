@@ -80,3 +80,27 @@ function createHeaderRow() {
   headerRow.appendChild(positionHeader);
   return headerRow;
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.getElementById('searchInput');
+    if (searchInput) {
+        searchInput.addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            const rows = document.querySelectorAll('tbody tr');
+            
+            rows.forEach(row => {
+                if (row.classList.contains('division-header')) {
+                    row.style.display = ''; // Всегда показываем заголовки отделений
+                    return;
+                }
+                
+                const callSign = row.cells[0]?.textContent.toLowerCase();
+                if (callSign && callSign.includes(searchTerm)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        });
+    }
+});

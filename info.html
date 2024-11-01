@@ -7,12 +7,13 @@
     <title>Информация о пользователях</title>
     <link rel="stylesheet" href="/assets/css/global.css">
     <link rel="stylesheet" href="/assets/css/info.css">
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.1.0/uicons-bold-straight/css/uicons-bold-straight.css'>
 </head>
 <body>
     <script src="/assets/script/main.js" defer></script>
     <header>
         <nav>
-            <div class="logo">72thCompany</div>
+            <div class="logo">Orion Group</div>
             <ul class="nav-links">
                 <li><a href="main.html">Главная</a></li>
                 <li><a href="info.html">Таблица</a></li>
@@ -22,14 +23,19 @@
     </header>
     
     <main>
-        <section class="info-section">
-            <h2>Информация о пользователях</h2>
-            <p>Эта таблица отображает данные пользователей. Данные интегрируются напрямую из google таблицы.</p>
-            <table class="styled-table">
-                <tbody>
-                    <!-- Данные подгружаться динамический-->
-                </tbody>
-            </table>
+        <section class="info-section fade-in">
+            <div class="search-box">
+                <i class="fi fi-bs-search"></i>
+                <input type="text" id="searchInput" placeholder="Поиск по позывному...">
+            </div>
+
+            <div class="table-container">
+                <table class="styled-table">
+                    <tbody>
+                        <!-- Данные подгружаться динамический-->
+                    </tbody>
+                </table>
+            </div>
         </section>
     </main>
 
