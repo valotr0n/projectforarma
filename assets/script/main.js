@@ -58,12 +58,35 @@ document.addEventListener('DOMContentLoaded', function() {
     if (currentPage.includes('aboutus.html')) {
         const contactForm = document.getElementById('contact-form');
         if (contactForm) {
+            //Проверка таймера при отправке сообщения
+            const submitButton = document.querySelector('.button_submit');
+            const cooldownEndTime = localStorage.getItem('cooldownEndTime');
+            
+            if (cooldownEndTime && Date.now() < parseInt(cooldownEndTime)) {
+                const remainingTime = Math.ceil((parseInt(cooldownEndTime) - Date.now()) / 1000);
+                submitButton.disabled = true;
+                submitButton.textContent = `Подождите ${remainingTime} секунд...`;
+                
+                setTimeout(() => {
+                    submitButton.disabled = false;
+                    submitButton.textContent = 'Отправить';
+                    localStorage.removeItem('cooldownEndTime');
+                }, remainingTime * 1000);
+            }
+
             contactForm.addEventListener('submit', async function(event) {
                 event.preventDefault();
 
                 const email = document.getElementById('email').value;
                 const message = document.getElementById('message').value;
                 const submitButton = document.querySelector('.button_submit');
+                
+                // Проверка email на допустимые домены
+                const emailPattern = /^[a-zA-Z0-9._%+-]+@(mail\.ru|yandex\.ru|rambler\.ru)$/;
+                if (!emailPattern.test(email)) {
+                    alert('Пожалуйста, используйте почту mail.ru, yandex.ru или rambler.ru');
+                    return;
+                }
                 
                 try {
                     const response = await fetch('http://localhost:3000/send-email', {
@@ -81,10 +104,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
                         submitButton.disabled = true;
                         submitButton.textContent = 'Подождите 90 секунд...';
+                        
+                        // Сохраняем время окончания таймера
+                        const cooldownEndTime = Date.now() + 90000;
+                        localStorage.setItem('cooldownEndTime', cooldownEndTime.toString());
 
                         setTimeout(() => {
                             submitButton.disabled = false;
                             submitButton.textContent = 'Отправить';
+                            localStorage.removeItem('cooldownEndTime');
                         }, 90000);
                     } else {
                         throw new Error('Ошибка при отправке сообщения');

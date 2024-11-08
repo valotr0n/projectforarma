@@ -2,7 +2,6 @@
 .hero-banner {
     height: 40vh;
     background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-                url('/assets/img/bg.jpg') center/cover;
     display: flex;
     flex-direction: column;
     justify-content: center;

@@ -205,7 +205,7 @@ header {
     margin-bottom: 50px; 
 }
 
-/* Выровненная секция с карточками новостей */
+
 .news-items {
     display: flex;
     flex-direction: column; 
@@ -525,7 +525,6 @@ header {
     }
 }
 
-/* Медиа-запросы для адаптивности */
 @media (max-width: 1200px) {
     .content {
         flex-direction: column;
