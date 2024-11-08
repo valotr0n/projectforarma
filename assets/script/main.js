@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     fadeElements.forEach(element => observer.observe(element));
 
-    // Определяем текущую страницу
+    
     const currentPage = window.location.pathname;
 
     // Обработчики только для главной страницы (main.html)
@@ -94,20 +94,47 @@ document.addEventListener('DOMContentLoaded', function() {
                     alert('Ошибка при отправке сообщения');
                 }
             });
+            
+            const emailInput = document.getElementById('email');
 
+            if (emailInput) {
+                emailInput.addEventListener('input', function(event) {
+                    const inputField = event.target;
+                    const cursorPosition = inputField.selectionStart;
+            // Проверка на правильность email
+                    const emailPattern = /^[a-zA-Z0-9._%+-]+@(yandex|mail|rambler|gmail)\.com$/;
+                    const errorMessage = document.getElementById('email-error-message');
+            
+                    // Если поле уже есть для вывода ошибок, иначе создаем
+                    if (!errorMessage) {
+                        const newErrorMessage = document.createElement('span');
+                        newErrorMessage.id = 'email-error-message';
+                        newErrorMessage.style.color = 'red';
+                        newErrorMessage.style.fontSize = '12px';
+                        inputField.parentNode.insertBefore(newErrorMessage, inputField.nextSibling);
+                    }
+            
+                    // Проверка соответствия шаблону
+                    if (!emailPattern.test(inputField.value) && inputField.value !== "") {
+                        document.getElementById('email-error-message').textContent = 'Введите корректный email с доменом yandex, mail, rambler или gmail';
+                    } else {
+                        document.getElementById('email-error-message').textContent = '';
+                    }
+                });
+            }
+            
             const messageInput = document.getElementById('message');
             if (messageInput) {
                 messageInput.addEventListener('input', function(event) {
                     const inputField = event.target;
                     const cursorPosition = inputField.selectionStart;
-                    inputField.value = inputField.value.replace(/[^а-яА-ЯёЁ\s]/g, '');
+                    inputField.value = inputField.value.replace(/[^а-яА-ЯёЁ0-9.,?\s]/g, '');
                     inputField.setSelectionRange(cursorPosition, cursorPosition);
                 });
             }
         }
     }
 
-    // Добавление эффекта при скролле для шапки
     window.addEventListener('scroll', function() {
         const header = document.querySelector('header');
         if (window.scrollY > 50) {

@@ -21,8 +21,8 @@ const transporter = nodemailer.createTransport({
     port: 465,  
     secure: true, 
     auth: {
-        user: 'почта с которой будут присылаться сообщения @dasdasdas@mail.ru',//почта должна быть той же что с примера снизу (from: ...) 
-        pass: 'app pasword создается на сайте mail.ru',  
+        user: 'beloshnez98@bk.ru',//почта должна быть той же что с примера сниuзу (from: ...) 
+        pass: 'r8dhfpscfQAJdy1zYyVS',  
     }
 });
 
@@ -31,8 +31,8 @@ app.post('/send-email', (req, res) => {
     const { email, message } = req.body;
 
     const mailOptions = {
-        from: 'dasdasdas@mail.ru', //почта откуда будут приходить сообщения
-        to: 'armaadmin@mail.ru', //почта куда будут приходить сообщения 
+        from: 'beloshnez98@bk.ru', //почта откуда будут приходить сообщения
+        to: 'stax1x@bk.ru', //почта куда будут приходить сообщения 
         subject: 'Сообщение от пользователя сайта',
         text: `Сообщение от: ${email}\n\n${message}`
     };
@@ -48,7 +48,7 @@ app.post('/send-email', (req, res) => {
     });
 });
 
-// Запуск сервера
+
 app.listen(port, () => {
     console.log(`Сервер запущен на http://localhost:${port}`);
 });

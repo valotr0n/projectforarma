@@ -13,7 +13,6 @@ function initClient() {
   });
 }
 
-// Добавьте в начало файла
 function hidePreloader() {
     const preloader = document.querySelector('.preloader');
     if (preloader) {
@@ -43,19 +42,18 @@ async function loadSheetData() {
   }
 }
 
-// Добавьте обработчик ошибок
 function handleError(error) {
     console.error('Ошибка:', error);
-    hidePreloader(); // Скрываем прелоадер даже при ошибке
+    hidePreloader();
     // Можно добавить отображение сообщения об ошибке для пользователя
 }
 
 // Рендеринг таблицы
 function renderTable(data) {
   const tableBody = document.querySelector('tbody');
-  tableBody.innerHTML = ''; // Очищаем таблицу
+  tableBody.innerHTML = '';
 
-  const fragment = document.createDocumentFragment(); // Оптимизация с помощью DocumentFragment
+  const fragment = document.createDocumentFragment(); 
 
   data.forEach(row => {
       const firstCellContent = row[0].trim();
@@ -85,7 +83,7 @@ function renderTable(data) {
       }
   });
 
-  tableBody.appendChild(fragment); // Добавляем все элементы 
+  tableBody.appendChild(fragment); 
 
   // Скрываем прелоадер после загрузки данных
   hidePreloader();
@@ -111,7 +109,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             rows.forEach(row => {
                 if (row.classList.contains('division-header')) {
-                    row.style.display = ''; // Всегда показываем заголовки отделений
+                    row.style.display = ''; 
                     return;
                 }
                 
