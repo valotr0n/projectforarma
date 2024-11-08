@@ -21,8 +21,8 @@ const transporter = nodemailer.createTransport({
     port: 465,  
     secure: true, 
     auth: {
-        user: 'beloshnez98@bk.ru',//почта должна быть той же что с примера сниuзу (from: ...) 
-        pass: 'r8dhfpscfQAJdy1zYyVS',  
+        user: '*',//почта должна быть той же что с примера сниuзу (from: ...) 
+        pass: '*',  
     }
 });
 
@@ -31,8 +31,8 @@ app.post('/send-email', (req, res) => {
     const { email, message } = req.body;
 
     const mailOptions = {
-        from: 'beloshnez98@bk.ru', //почта откуда будут приходить сообщения
-        to: 'stax1x@bk.ru', //почта куда будут приходить сообщения 
+        from: '*', //почта откуда будут приходить сообщения
+        to: '*', //почта куда будут приходить сообщения 
         subject: 'Сообщение от пользователя сайта',
         text: `Сообщение от: ${email}\n\n${message}`
     };
