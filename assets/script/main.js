@@ -97,6 +97,11 @@ document.addEventListener('DOMContentLoaded', function() {
                         body: JSON.stringify({ email, message })
                     });
 
+                    if (response.status === 429) {
+                        alert('Пожалуйста, подождите перед отправкой сообщения'); // Обработка ошибки
+                        return;
+                    }
+
                     if (response.ok) {
                         document.getElementById('email').value = '';
                         document.getElementById('message').value = '';
@@ -133,7 +138,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     const emailPattern = /^[a-zA-Z0-9._%+-]+@(yandex|mail|rambler|gmail)\.com$/;
                     const errorMessage = document.getElementById('email-error-message');
             
-                    // Если поле уже есть для вывода ошибок, иначе создаем
                     if (!errorMessage) {
                         const newErrorMessage = document.createElement('span');
                         newErrorMessage.id = 'email-error-message';

@@ -21,18 +21,23 @@ const transporter = nodemailer.createTransport({
     port: 465,  
     secure: true, 
     auth: {
-        user: 'почта откуда будет приходить сообщение',//почта должна быть той же что с примера сниuзу (from: ...) 
-        pass: 'APP пароль для почты',  
+        user: 'mail',//почта должна быть той же что с примера сниuзу (from: ...) 
+        pass: 'apppas',  
     }
 });
 
+let cooldownEndTime = null; 
 // Обработка формы
 app.post('/send-email', (req, res) => {
+    if (cooldownEndTime && Date.now() < cooldownEndTime) { //проверка таймера
+        return res.status(429).send('Пожалуйста, подождите перед отправкой сообщения'); 
+    }
+
     const { email, message } = req.body;
 
     const mailOptions = {
-        from: 'пчота откуда придет сообщение', //почта откуда будут приходить сообщения
-        to: 'почта куда придет сообщение', //почта куда будут приходить сообщения 
+        from: '*******', //почта откуда будут приходить сообщения
+        to: '**********', //почта куда будут приходить сообщения 
         subject: 'Сообщение от пользователя сайта',
         text: `Сообщение от: ${email}\n\n${message}`
     };
@@ -44,6 +49,9 @@ app.post('/send-email', (req, res) => {
         } else {
             console.log('Email sent: ' + info.response);
             res.status(200).send('Сообщение успешно отправлено');
+
+            // Устанавливаем время окончания таймера на 90 секунд
+            cooldownEndTime = Date.now() + 90000;
         }
     });
 });
